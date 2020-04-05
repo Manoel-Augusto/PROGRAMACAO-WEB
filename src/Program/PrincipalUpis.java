@@ -1,4 +1,4 @@
-/*package Program;
+package Program;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,14 +9,14 @@ import Entities.Data;
 public class PrincipalUpis {
 
 	public static void main(String[] args) throws ParseException {
-		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		//Date dataNasc;
-		//dataNasc = sdf.parse("12/05/2017");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataNasc;
+		dataNasc = sdf.parse("12/05/2017");
 		//Data d = new Data(sdf.parse("12/05/2017"));
 		
 		
-		Data dd = new Data("08/09/1990", (short)2019, (byte)1, (byte)1);
-		//dd.CalcularIdade();
+		Data dd = new Data("08/08/1990", (short)2019, (byte)1, (byte)1);
+		dd.CalcularIdade();
 		
 		System.out.println(dd.getIdade());
 		
@@ -25,4 +25,4 @@ public class PrincipalUpis {
 		System.out.println(dd.getAno());
 	}
 
-}*/
+}

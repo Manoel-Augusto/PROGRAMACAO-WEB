@@ -3,8 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +30,21 @@ public class Servlet extends HttpServlet {
 
 		Data da = null;
 		try {
+
 			da = new Data(data, ano, mes, dia);
-		} catch (ParseException e) {
+
+		}
+
+		catch (ParseException e) {
 			e.printStackTrace();
+		}
+
+		Calendar calSist = Calendar.getInstance();
+		if (ano > calSist.getWeekYear()) {
+			writer.println("<html><body >");
+			writer.println(" ATENÇÃO ANO INFORMADO É MAIOR QUE A DATA ATUAL ");
+			writer.println("<body><html>");
+			System.out.println("INVÁLIDA");
 		}
 
 		if (da.getData() == -1) {

@@ -18,7 +18,7 @@ public class Data {
 	private byte mes;
 	private short ano;
 	private String dataTemp;
-	private byte data;
+	private int data;
 
 	public Data(String dataTemp, short ano, byte mes, byte dia) throws ParseException {
 
@@ -43,7 +43,7 @@ public class Data {
 			data = -1;
 	}
 
-	public byte getData() {
+	public int getData() {
 		return data;
 	}
 
@@ -166,16 +166,29 @@ public class Data {
 		calSist.setTime(dataSist);
 		calNasc.setTime(dataNasc);
 		idade = (calSist.getWeekYear() - calNasc.getWeekYear());
+		int anoN = calNasc.getWeekYear();
+		int anoS = calSist.getWeekYear();
 
-		byte mesSist = (byte) (dataSist.getMonth() + 1);
+		int mesSist = dataSist.getMonth() + 1;
 
-		int diaS = (dataSist.getDay() + 1);
+		int diaS = (dataSist.getDate());
 
-		// int diaN = dia;
-		// int qtDia = (byte) (diaS-diaN);
+		// Aqui é calculado a idade em "meses"
+		if (anoN == anoS) {
+			idade = mesSist - mes;
+		}
 
-		if (mesSist > mes) {
+		if (mes > mesSist) {
 			idade -= 1;
+
+		} else {
+			if (mes == mesSist) {
+				if (dia > diaS) {
+					idade -= 1;
+
+				}
+
+			}
 		}
 
 	}

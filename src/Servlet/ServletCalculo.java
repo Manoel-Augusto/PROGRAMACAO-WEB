@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import Entities.Data;
 
-@WebServlet(urlPatterns = "/Servelet")
-public class Servlet extends HttpServlet {
+@WebServlet("/ServletCalculo")
+public class ServletCalculo extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+ 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter writer = resp.getWriter();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
 
-		String data = req.getParameter("id");
+		String data = request.getParameter("id");
 		String[] spl = data.split("/");
 		byte dia = Byte.parseByte(spl[0]);
 		byte mes = Byte.parseByte(spl[1]);
@@ -42,18 +42,18 @@ public class Servlet extends HttpServlet {
 		Calendar calSist = Calendar.getInstance();
 		if (ano > calSist.getWeekYear()) {
 			writer.println("<html><body >");
-			writer.println(" ATENÇÃO ANO INFORMADO É MAIOR QUE A DATA ATUAL ");
+			writer.println("<h3>ATENÇÃO ANO INFORMADO É MAIOR QUE A DATA ATUAL<h3>");
 			writer.println("<body><html>");
-			System.out.println("INVÁLIDA");
+			
 		}
 
 		if (da.getData() == -1) {
 			writer.println("<html><body >");
-			writer.println(" ATENÇÃO A DATA INFORMADA É INVÁLIDA ");
+			writer.println("<h3> ATENÇÃO A DATA INFORMADA É INVÁLIDA<h3> ");
 			writer.println("<body><html>");
 		} else {
 			writer.println("<html><body >");
-			writer.println("SUA IDADE É = " + da.getIdade());
+			writer.println("<h3>SUA IDADE É: <h3>" + da.getIdade());
 			writer.println("<body><html>");
 		}
 

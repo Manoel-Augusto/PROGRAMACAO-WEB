@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
@@ -22,12 +23,14 @@ public class ServletLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LoginSenha login = new LoginSenha("admin", "123");
+		HttpSession session = request.getSession();
+		session.setAttribute("aut", login);
 
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 
 		if (login.validarSenha(usuario, senha) == true) {
-			RequestDispatcher rd = request.getRequestDispatcher("calculo.html");
+			RequestDispatcher rd = request.getRequestDispatcher("/restrito");//calculo.html
 			rd.forward(request, response);
 		} else {
 

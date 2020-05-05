@@ -22,14 +22,14 @@ public class ServletLogin extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		LoginSenha login = new LoginSenha("admin", "123");
+		LoginSenha loginn = new LoginSenha("admin", "123");
 		HttpSession session = request.getSession();
-		session.setAttribute("aut", login);
+		session.setAttribute("aut", loginn);
 
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 
-		if (login.validarSenha(usuario, senha) == true) {
+		if (loginn.validarSenha(usuario, senha) == true) {
 			RequestDispatcher rd = request.getRequestDispatcher("/restrito");//calculo.html
 			rd.forward(request, response);
 		} else {

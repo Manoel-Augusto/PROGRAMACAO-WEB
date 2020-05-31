@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 import Entities.LoginSenha;
 
 @WebServlet("/ServletLogin")
@@ -22,15 +20,15 @@ public class ServletLogin extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		LoginSenha loginn = new LoginSenha("admin", "123");
+		LoginSenha login = new LoginSenha("admin", "123");
 		HttpSession session = request.getSession();
-		session.setAttribute("aut", loginn);
+		session.setAttribute("aut", login);
 
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 
-		if (loginn.validarSenha(usuario, senha) == true) {
-			RequestDispatcher rd = request.getRequestDispatcher("/restrito");//calculo.html
+		if (login.validarSenha(usuario, senha) == true) {
+			RequestDispatcher rd = request.getRequestDispatcher("/restrito");
 			rd.forward(request, response);
 		} else {
 

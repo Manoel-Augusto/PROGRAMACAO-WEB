@@ -12,7 +12,7 @@ public class ClassTest {
 	 * Esta classe é apenas para teste do funcionamento das entidades da aplicação*/
 
 	public static void main(String[] args) throws ParseException {
-		LoginSenha login = new LoginSenha("admin", "123");
+		/*LoginSenha login = new LoginSenha("admin", "123");
 		
 		System.out.println(login.validarSenha("manoel", "123"));
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -29,7 +29,9 @@ public class ClassTest {
 		System.out.println(dd.getDia());
 		System.out.println(dd.getMes());
 		System.out.println(dd.getAno());
-	
+	*/
+		
+		
 		
 	}
 
